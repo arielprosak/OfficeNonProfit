@@ -1,0 +1,74 @@
+{% extends "server/template.html" %}
+{% load bootstrap %}
+{% load static %}
+
+{% block title %}לב אחד - מתנדבים קרובים לבקשה{% endblock %}
+
+{% block body %}
+<!-- Section: Block Content -->
+<section class="dark-grey-text text-center">
+
+  <h3 class="font-weight-bold mb-4 pb-2">ברוכים הבאים לחמל של עמותת לב אחד</h3>
+  <p class="text-muted w-responsive mx-auto mb-5">שלום לך מתנדב יקר! כעת תוכל לבחור מה ברצונך לראות?</p>
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-6 mb-4">
+
+      <div class="px-3 pt-3 mx-1 mt-1 pb-0">
+        <h4 class="font-weight-bold mb-3">רשימת מתנדבים</h4>
+        <a class="btn btn-success btn-rounded btn-md" href="{% url 'show_all_volunteers' %}">עבור</a>
+      </div>
+
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6 mb-4">
+
+
+      <div class="px-3 pt-3 mx-1 mt-1 pb-0">
+        <h4 class="font-weight-bold mb-3">בקשות עזרה</h4>
+        <a class="btn btn-success btn-rounded btn-md" href="{% url 'show_all_help_request' %}">עבור</a>
+      </div>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+
+  <br/>
+
+  <div  style="text-align: center;">
+    <div class="card-deck">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">מתנדבים</h5>
+          <h2 class="card-text font-weight-bold mb-3">{{ numbers.total_volunteers }}</h2>
+                    <h5 class="card-title">  {{daily_numbers.daily_volunteers}}  מתנדבים חדשים מ-7:00</h5>
+
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">בקשות עזרה</h5>
+          <h2 class="card-text font-weight-bold mb-3">{{ numbers.total_help_requests }}</h2>
+          <h5 class="card-title">  {{daily_numbers.daily_help}} בקשות עזרה מ-7:00</h5>
+
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">בקשות עזרה שטופלו</h5>
+          <h2 class="card-text font-weight-bold mb-3">{{ numbers.solved_help_requests }}</h2>
+          <h5 class="card-title">  {{daily_numbers.daily_solved}} בקשות שטופלו מ-7:00</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Grid row -->
+
+</section>
+{% endblock %}
